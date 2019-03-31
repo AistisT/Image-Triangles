@@ -1,0 +1,87 @@
+﻿@using ImageTriangles.ViewModels
+@model ImageViewModel
+
+@{
+    ViewBag.Title = "Image";
+    Layout = "_Layout";
+}
+
+<main role="main">
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-lg-5 box-shadow">
+                        <img class="card-img-top border-bottom" src="@Model.ImageStream" alt="Uploaded Image">
+                        <div class="card-body">
+                            <p class="card-text"><h2>@Model.ImageName</h2></p>
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Find triangle row and column.
+                                            </button>
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                        
+                                            <form asp-action="GetTriangleName" asp-controller="Home"
+                                                  data-ajax="true"
+                                                  data-ajax-method="POST"
+                                                  data-ajax-mode="replace"
+                                                  data-ajax-update="#complex-ajax-name">
+
+                                                <div id="complex-ajax-name">
+                                                    @{
+                                                        var triangleName = new TriangleViewModel();
+                                                    }
+                                                    @await Html.PartialAsync("_TriangleNameForm", triangleName)
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Find Triangle Coordinates
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <form asp-action="GetTriangleCoordinates" asp-controller="Home"
+                                                  data-ajax="true"
+                                                  data-ajax-method="POST"
+                                                  data-ajax-mode="replace"
+                                                  data-ajax-update="#complex-ajax-coordinates">
+                                                
+                                                <div id="complex-ajax-coordinates">
+                                                    @{
+                                                        var triangleViewModel = new TriangleViewModel();
+                                                    }
+                                                    @await Html.PartialAsync("_TriangleCoordinatesForm", triangleViewModel)
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+@section Scripts  {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

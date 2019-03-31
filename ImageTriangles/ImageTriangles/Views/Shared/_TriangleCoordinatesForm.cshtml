@@ -1,0 +1,55 @@
+﻿@model ImageTriangles.ViewModels.TriangleViewModel
+
+<div>
+    <div class="form-group">
+        <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Triangle Name</span>
+            </div>
+            <input asp-for="Name" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-outline-secondary" id="CalculateByName" type="submit">Calculate Triangle Coordinates</button>
+            </div>
+            <div class="input-group input-group-sm mt-2">
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+            @{
+                if (Model.TriangleFound.HasValue && Model.TriangleFound.Value)
+                {
+                    <p class="h5">@Model.Name coordinates:</p>
+                    <div class="input-group input-group-sm mt-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">V1x : @Html.DisplayFor(model => model.Point1.X)</span>
+                        </div>
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">V1y : @Html.DisplayFor(model => model.Point1.Y)</span>
+                        </div>
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">V2x : @Html.DisplayFor(model => model.Point2.X)</span>
+                        </div>
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">V2y : @Html.DisplayFor(model => model.Point2.Y)</span>
+                        </div>
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">V3x : @Html.DisplayFor(model => model.Point3.X)</span>
+                        </div>
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">V3y : @Html.DisplayFor(model => model.Point3.Y)</span>
+                        </div>
+                    </div>
+                }
+                else if (Model.TriangleFound.HasValue && !Model.TriangleFound.Value)
+                {
+                    <div class="input-group input-group-sm mt-2">
+                        <label class="mt-2">@Model.Name triangle was not found.</label>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

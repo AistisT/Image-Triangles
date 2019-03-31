@@ -1,0 +1,54 @@
+﻿@model ImageTriangles.ViewModels.TriangleViewModel
+
+<div>
+    <div class="form-group">
+        <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">V1x</span>
+            </div>
+            <input type="number" id="vx1" asp-for="Point1.X" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">V1y</span>
+            </div>
+            <input type="number" id="vy1" asp-for="Point1.Y" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">V2x</span>
+            </div>
+            <input type="number" id="vx2" asp-for="Point2.X" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> V2y</span>
+            </div>
+            <input type="number" id="vy2" asp-for="Point2.Y" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">V3x</span>
+            </div>
+            <input type="number" id="vx3" asp-for="Point3.X" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> V3y</span>
+            </div>
+            <input type="number" id="vy3" asp-for="Point3.Y" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-outline-secondary" id="CalculateByCoordinates" type="submit">Find Triangle</button>
+            </div>
+            <div class="input-group input-group-sm mt-2">
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+            @{
+                if (Model.TriangleFound.HasValue && Model.TriangleFound.Value)
+                {
+            <div>
+                <label class="mt-2">Triangle name: @Model.Name</label><br />
+                <label>Triangle Row: @Model.Name.First()</label> <br/>
+                <label>Triangle Column: @Model.Name.Substring(1)</label>
+            </div>
+                }
+                else if (Model.TriangleFound.HasValue && !Model.TriangleFound.Value)
+                {
+                    <div class="input-group input-group-sm mt-2">
+                        <label class="mt-2">Triangle matching provided co-ordinates was not found.</label>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

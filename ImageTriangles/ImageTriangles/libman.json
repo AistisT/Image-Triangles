@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@4.3.1",
+      "destination": "wwwroot/lib/bootstrap/dist",
+      "files": [ "css/bootstrap-grid.css", "css/bootstrap-reboot.css", "css/bootstrap.css", "js/bootstrap.js" ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "jquery-ajax-unobtrusive",
+      "destination": "wwwroot/lib/jquery-ajax-unobtrusive/"
+    }
+  ]
+}
