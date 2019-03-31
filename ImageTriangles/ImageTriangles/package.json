@@ -1,8 +1,0 @@
-{
-  "version": "1.0.0",
-  "name": "your-system",
-  "devDependencies": {
-    "jquery-ajax-unobtrusive": "^3.2.4"
-  },
-  "exclude": []
-}
